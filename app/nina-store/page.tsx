@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import { Search, Filter, ShoppingCart, Star, Heart, Eye, Plus, Sparkles, TrendingUp, Package } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -255,8 +254,78 @@ function NinaStoreContent() {
     );
   };
 
+  const storeJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Store',
+    '@id': 'https://ninamassage.com/nina-store',
+    name: 'Nina Store',
+    description: 'Boutique en ligne de produits de beauté, cosmétiques et bien-être à Niamey, Niger',
+    url: 'https://ninamassage.com/nina-store',
+    telephone: '+22781836571',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Quartier Recasement, 3ème latérite, plaque Adouwal Adamou',
+      addressLocality: 'Niamey',
+      addressCountry: 'NE'
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Produits de Beauté et Bien-être',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Cosmétiques Premium',
+            description: 'Gamme complète de cosmétiques de qualité'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Produits de Bien-être',
+            description: 'Produits naturels pour le bien-être et la relaxation'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Épices Authentiques',
+            description: 'Sélection d\'épices traditionnelles du Niger'
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-[var(--nina-burgundy)]/5">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(storeJsonLd) }}
+      />
+
+      {/* SEO Content Hidden */}
+      <div className="sr-only">
+        <h1>Nina Store - Boutique de Produits de Beauté à Niamey, Niger</h1>
+        <p>Nina Store est votre boutique en ligne de référence pour les produits de beauté, cosmétiques et bien-être à Niamey, Niger. Découvrez notre sélection exclusive de cosmétiques premium, produits de bien-être naturels, accessoires de beauté et épices authentiques du Niger. Commandez facilement via WhatsApp au +227 81 83 65 71 et bénéficiez d'une livraison rapide à Niamey.</p>
+        <h2>Produits Disponibles à Nina Store Niamey</h2>
+        <ul>
+          <li>Cosmétiques et produits de beauté à Niamey</li>
+          <li>Crèmes et soins du visage au Niger</li>
+          <li>Produits de bien-être et relaxation à Niamey</li>
+          <li>Épices traditionnelles du Niger</li>
+          <li>Accessoires de beauté à Niamey</li>
+          <li>Produits de massage au Niger</li>
+          <li>Huiles essentielles à Niamey</li>
+          <li>Compléments alimentaires au Niger</li>
+        </ul>
+        <h3>Pourquoi choisir Nina Store à Niamey ?</h3>
+        <p>Nina Store vous propose une sélection rigoureuse de produits de qualité à Niamey, Niger. Tous nos produits sont soigneusement choisis pour leur efficacité et leur qualité. Commande facile via WhatsApp, conseils personnalisés et livraison rapide dans tout Niamey. Votre satisfaction est notre priorité.</p>
+      </div>
+
       <Header variant="light" />
       <Cart />
 

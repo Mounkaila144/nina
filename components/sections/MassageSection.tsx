@@ -137,6 +137,7 @@ export default function MassageSection() {
           </div>
           <h2 className="text-5xl md:text-6xl font-playfair nina-burgundy mb-6 luxury-text-glow">
             Nina <span className="text-[var(--nina-gold)]">Massage</span>
+            <span className="sr-only"> & Kiné - Centre de Massage Professionnel à Niamey, Niger</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Découvrez l'art du bien-être dans notre centre d'exception.

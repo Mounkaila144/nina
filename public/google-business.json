@@ -1,0 +1,151 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Nina Massage & Kiné",
+  "image": [
+    "https://ninamassage.com/image/nina-massage-niamey.jpg",
+    "https://ninamassage.com/image/massage-niamey.jpg",
+    "https://ninamassage.com/image/kinesitherapie-niger.jpg"
+  ],
+  "description": "Centre de massage professionnel et kinésithérapie à Niamey, Niger. Services de massage thérapeutique, épilation, drainage lymphatique, soins esthétiques.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Quartier Recasement, 3ème latérite, plaque Adouwal Adamou",
+    "addressLocality": "Niamey",
+    "addressRegion": "Niamey",
+    "postalCode": "",
+    "addressCountry": "NE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 13.5116,
+    "longitude": 2.1254
+  },
+  "url": "https://ninamassage.com",
+  "telephone": "+22781836571",
+  "email": "contact@ninamassage.com",
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 13.5116,
+      "longitude": 2.1254
+    },
+    "geoRadius": "50000"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Niamey",
+      "containedInPlace": {
+        "@type": "Country",
+        "name": "Niger"
+      }
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services de Massage et Bien-être",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Massage Thérapeutique",
+          "description": "Massage professionnel pour soulager les tensions musculaires et améliorer le bien-être"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Kinésithérapie",
+          "description": "Soins de kinésithérapie pour la rééducation et le traitement des troubles musculo-squelettiques"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Épilation",
+          "description": "Services d'épilation professionnelle pour hommes et femmes"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Drainage Lymphatique",
+          "description": "Technique de massage spécialisée pour améliorer la circulation lymphatique"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Soins Esthétiques",
+          "description": "Soins du visage et traitements esthétiques personnalisés"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Pédicure et Manucure",
+          "description": "Soins des pieds et des mains professionnels"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Marie Dubois"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "Nina est exceptionnelle ! Ses massages m'ont aidée à retrouver sérénité et bien-être. Je recommande vivement ses services."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Sophie Martin"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "Le drainage lymphatique chez Nina a transformé ma routine bien-être. Professionnalisme et douceur au rendez-vous."
+    }
+  ],
+  "sameAs": [
+    "https://wa.me/22781836571"
+  ]
+}

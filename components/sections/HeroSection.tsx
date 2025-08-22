@@ -166,6 +166,7 @@ export default function HeroSection() {
             <Sparkles className="text-[var(--nina-gold)] mr-4 drop-shadow-lg animate-pulse" size={40} />
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-playfair font-light luxury-text-shadow bg-gradient-to-r from-white via-[var(--nina-gold)] to-white bg-clip-text text-transparent animate-gradient-x">
               Nina
+              <span className="sr-only"> Massage & Kiné - Centre de Massage Professionnel à Niamey, Niger</span>
             </h1>
             <Heart className="text-[var(--nina-gold)] ml-4 drop-shadow-lg animate-pulse" size={40} />
           </div>
