@@ -5,7 +5,11 @@ import { Menu, X, Phone, MapPin, MessageCircle, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CartButton from '@/components/ui/CartButton';
 
-export default function Header() {
+interface HeaderProps {
+  variant?: 'default' | 'light';
+}
+
+export default function Header({ variant = 'default' }: HeaderProps = {}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('accueil');
@@ -120,13 +124,17 @@ export default function Header() {
                 <span className="bg-gradient-to-r from-[var(--nina-burgundy)] via-[var(--nina-gold)] to-[var(--nina-burgundy)] bg-clip-text text-transparent font-playfair text-logo-glow gradient-text-animate group-hover:from-[var(--nina-gold)] group-hover:via-[var(--nina-burgundy)] group-hover:to-[var(--nina-gold)] transition-all duration-500">
                   Nina
                 </span>
-                <span className="text-white ml-2 font-light group-hover:text-[var(--nina-gold)] transition-colors duration-300 relative text-logo-glow">
+                <span className={`ml-2 font-light group-hover:text-[var(--nina-gold)] transition-colors duration-300 relative text-logo-glow ${
+                  variant === 'light' ? 'text-gray-800' : 'text-white'
+                }`}>
                   {typeof window !== 'undefined' && window.location.pathname === '/nina-store' ? 'Store' : 'Massage & Kiné'}
                   {/* Underline effect */}
                   <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[var(--nina-burgundy)] to-[var(--nina-gold)] group-hover:w-full transition-all duration-500"></div>
                 </span>
               </h1>
-              <p className="text-xs text-white/80 font-medium tracking-wide group-hover:text-[var(--nina-gold)] transition-colors duration-300 opacity-70 group-hover:opacity-100 hidden sm:block">
+              <p className={`text-xs font-medium tracking-wide group-hover:text-[var(--nina-gold)] transition-colors duration-300 opacity-70 group-hover:opacity-100 hidden sm:block ${
+                variant === 'light' ? 'text-gray-600' : 'text-white/80'
+              }`}>
                 <span className="inline-block mr-1 group-hover:animate-pulse">✨</span>
                 {typeof window !== 'undefined' && window.location.pathname === '/nina-store' ? 'Boutique en ligne' : 'Centre de Bien-être'}
                 <span className="inline-block ml-1 group-hover:animate-pulse">
@@ -147,7 +155,9 @@ export default function Header() {
               className={`group nav-link-hover px-4 py-2 transition-all duration-500 font-medium rounded-lg relative overflow-hidden ${
                 activeSection === 'accueil'
                   ? 'text-white bg-gradient-to-r from-[var(--nina-burgundy)] to-[var(--nina-gold)] luxury-shadow'
-                  : 'text-white hover:text-[var(--nina-gold)] glass-effect hover:glass-effect-dark'
+                  : variant === 'light'
+                    ? 'text-gray-800 hover:text-[var(--nina-gold)] bg-white/50 hover:bg-white/80'
+                    : 'text-white hover:text-[var(--nina-gold)] glass-effect hover:glass-effect-dark'
               }`}
             >
               <span className="relative z-10">Accueil</span>
@@ -160,7 +170,9 @@ export default function Header() {
               className={`group nav-link-hover px-4 py-2 transition-all duration-500 font-medium rounded-lg relative overflow-hidden ${
                 activeSection === 'massage'
                   ? 'text-white bg-gradient-to-r from-[var(--nina-burgundy)] to-[var(--nina-gold)] luxury-shadow'
-                  : 'text-white hover:text-[var(--nina-gold)] glass-effect hover:glass-effect-dark'
+                  : variant === 'light'
+                    ? 'text-gray-800 hover:text-[var(--nina-gold)] bg-white/50 hover:bg-white/80'
+                    : 'text-white hover:text-[var(--nina-gold)] glass-effect hover:glass-effect-dark'
               }`}
             >
               <span className="relative z-10">Services</span>
@@ -173,7 +185,9 @@ export default function Header() {
               className={`group nav-link-hover px-4 py-2 transition-all duration-500 font-medium rounded-lg relative overflow-hidden ${
                 activeSection === 'nina-store'
                   ? 'text-white bg-gradient-to-r from-[var(--nina-burgundy)] to-[var(--nina-gold)] luxury-shadow'
-                  : 'text-white hover:text-[var(--nina-gold)] glass-effect hover:glass-effect-dark'
+                  : variant === 'light'
+                    ? 'text-gray-800 hover:text-[var(--nina-gold)] bg-white/50 hover:bg-white/80'
+                    : 'text-white hover:text-[var(--nina-gold)] glass-effect hover:glass-effect-dark'
               }`}
             >
               <span className="relative z-10">Nina Store</span>
@@ -186,7 +200,9 @@ export default function Header() {
               className={`group nav-link-hover px-4 py-2 transition-all duration-500 font-medium rounded-lg relative overflow-hidden ${
                 activeSection === 'contact'
                   ? 'text-white bg-gradient-to-r from-[var(--nina-burgundy)] to-[var(--nina-gold)] luxury-shadow'
-                  : 'text-white hover:text-[var(--nina-gold)] glass-effect hover:glass-effect-dark'
+                  : variant === 'light'
+                    ? 'text-gray-800 hover:text-[var(--nina-gold)] bg-white/50 hover:bg-white/80'
+                    : 'text-white hover:text-[var(--nina-gold)] glass-effect hover:glass-effect-dark'
               }`}
             >
               <span className="relative z-10">Contact</span>
@@ -205,7 +221,11 @@ export default function Header() {
                 href="https://wa.me/22781836571"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group glass-effect border border-white/30 text-white px-4 py-2 rounded-full font-semibold hover:glass-effect-dark hover:text-[var(--nina-gold)] transition-all duration-500 hover:scale-105 luxury-shadow text-sm relative overflow-hidden"
+                className={`group border px-4 py-2 rounded-full font-semibold transition-all duration-500 hover:scale-105 luxury-shadow text-sm relative overflow-hidden ${
+                  variant === 'light'
+                    ? 'bg-white border-gray-300 text-[var(--nina-burgundy)] hover:bg-gray-50 hover:text-[var(--nina-gold)]'
+                    : 'glass-effect border-white/30 text-white hover:glass-effect-dark hover:text-[var(--nina-gold)]'
+                }`}
               >
                 <span className="relative z-10 flex items-center space-x-2">
                   <MessageCircle className="w-4 h-4 group-hover:animate-bounce" />
@@ -244,25 +264,41 @@ export default function Header() {
             <nav className="flex flex-col space-y-2">
               <button
                 onClick={() => scrollToSection('accueil')}
-                className="text-left text-white hover:text-[var(--nina-gold)] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/20 font-medium"
+                className={`text-left transition-all duration-300 py-3 px-4 rounded-lg font-medium ${
+                  variant === 'light'
+                    ? 'text-gray-800 hover:text-[var(--nina-gold)] hover:bg-gray-100'
+                    : 'text-white hover:text-[var(--nina-gold)] hover:bg-white/20'
+                }`}
               >
                 🏠 Accueil
               </button>
               <button
                 onClick={() => scrollToSection('massage')}
-                className="text-left text-white hover:text-[var(--nina-gold)] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/20 font-medium"
+                className={`text-left transition-all duration-300 py-3 px-4 rounded-lg font-medium ${
+                  variant === 'light'
+                    ? 'text-gray-800 hover:text-[var(--nina-gold)] hover:bg-gray-100'
+                    : 'text-white hover:text-[var(--nina-gold)] hover:bg-white/20'
+                }`}
               >
                 💆‍♀️ Services
               </button>
               <a
                 href="/nina-store"
-                className="text-left text-white hover:text-[var(--nina-gold)] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/20 font-medium block"
+                className={`text-left transition-all duration-300 py-3 px-4 rounded-lg font-medium block ${
+                  variant === 'light'
+                    ? 'text-gray-800 hover:text-[var(--nina-gold)] hover:bg-gray-100'
+                    : 'text-white hover:text-[var(--nina-gold)] hover:bg-white/20'
+                }`}
               >
                 🛍️ Nina Store
               </a>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-left text-white hover:text-[var(--nina-gold)] transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/20 font-medium"
+                className={`text-left transition-all duration-300 py-3 px-4 rounded-lg font-medium ${
+                  variant === 'light'
+                    ? 'text-gray-800 hover:text-[var(--nina-gold)] hover:bg-gray-100'
+                    : 'text-white hover:text-[var(--nina-gold)] hover:bg-white/20'
+                }`}
               >
                 📞 Contact
               </button>
