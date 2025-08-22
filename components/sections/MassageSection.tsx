@@ -1,6 +1,7 @@
 'use client';
 
-import { Clock, Star, Users, Zap } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Clock, Star, Users, Zap, Sparkles, Heart, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -79,96 +80,196 @@ const features = [
 ];
 
 export default function MassageSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="massage" className="py-20 nina-elegant-bg relative overflow-hidden">
-      {/* Luxury Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+    <section ref={sectionRef} id="massage" className="py-24 bg-gradient-to-br from-white via-gray-50 to-[var(--nina-burgundy)]/5 relative overflow-hidden">
+      {/* Enhanced Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full nina-luxury-gradient-radial"></div>
+        <div className="absolute top-20 right-20 w-64 h-64 bg-[var(--nina-gold)] rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute bottom-20 left-20 w-48 h-48 bg-[var(--nina-burgundy)] rounded-full blur-3xl opacity-20"></div>
       </div>
+
+      {/* Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-[var(--nina-gold)]/20 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${4 + Math.random() * 6}s`,
+            }}
+          />
+        ))}
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-playfair nina-burgundy mb-6">
-            Nina Massage
+        {/* Enhanced Header */}
+        <div className={`text-center mb-20 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="inline-flex items-center space-x-2 bg-[var(--nina-burgundy)]/10 rounded-full px-6 py-2 mb-6">
+            <Sparkles className="w-5 h-5 text-[var(--nina-burgundy)]" />
+            <span className="text-[var(--nina-burgundy)] font-medium">Services Premium</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-playfair nina-burgundy mb-6 luxury-text-glow">
+            Nina <span className="text-[var(--nina-gold)]">Massage</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Offrez-vous un moment d'exception dans notre centre esthétique. 
-            Nos thérapeutes experts vous accompagnent vers un bien-être absolu 
-            grâce à des soins personnalisés et des techniques raffinées.
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Découvrez l'art du bien-être dans notre centre d'exception.
+            Nos thérapeutes certifiés vous offrent une expérience unique
+            alliant techniques traditionnelles et innovations modernes.
           </p>
         </div>
 
-        {/* Features */}
-        <div className="grid md:grid-cols-4 gap-8 mb-16">
+        {/* Enhanced Features */}
+        <div className="grid md:grid-cols-4 gap-8 mb-20">
           {features.map((feature, index) => (
-            <div key={index} className="text-center animate-slide-up" style={{animationDelay: `${index * 0.1}s`}}>
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full nina-gradient mb-4">
+            <div
+              key={index}
+              className={`text-center bg-white rounded-2xl p-6 shadow-md border border-gray-100 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{transitionDelay: `${200 + index * 100}ms`}}
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full nina-gradient mb-6">
                 <feature.icon className="text-white" size={24} />
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 text-sm">{feature.description}</p>
+              <h3 className="text-lg font-semibold mb-3 text-gray-800">{feature.title}</h3>
+              <p className="text-gray-600 leading-relaxed text-sm">{feature.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Services Grid */}
+        {/* Modern Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card key={index} className="hover-lift border-0 luxury-shadow overflow-hidden animate-slide-up luxury-glow" style={{animationDelay: `${index * 0.1}s`}}>
+            <Card
+              key={index}
+              className={`border-0 bg-white rounded-3xl overflow-hidden shadow-lg ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{transitionDelay: `${400 + index * 150}ms`}}
+            >
               <div className="relative">
                 <img
                   src={service.image}
                   alt={service.name}
                   className="w-full h-48 object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+
                 {service.popular && (
-                  <Badge className="absolute top-3 right-3 nina-luxury-gradient-dark text-white luxury-shadow">
+                  <Badge className="absolute top-4 left-4 bg-[var(--nina-burgundy)] text-white px-3 py-1 rounded-full text-xs font-medium">
+                    <Star className="w-3 h-3 mr-1 fill-current" />
                     Populaire
                   </Badge>
                 )}
+
+                {/* Price Badge */}
+                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1">
+                  <span className="text-[var(--nina-burgundy)] font-bold text-sm">{service.price}</span>
+                </div>
               </div>
-              <CardHeader>
-                <div className="flex justify-between items-start">
-                  <CardTitle className="text-xl">{service.name}</CardTitle>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold nina-burgundy">{service.price}</div>
-                    <div className="text-sm text-gray-500 flex items-center">
-                      <Clock size={14} className="mr-1" />
-                      {service.duration}
-                    </div>
+
+              <CardHeader className="p-6">
+                <div className="mb-4">
+                  <CardTitle className="text-xl font-semibold text-gray-800 mb-2">
+                    {service.name}
+                  </CardTitle>
+                  <div className="flex items-center text-sm text-gray-500 mb-3">
+                    <Clock size={16} className="mr-2 text-[var(--nina-burgundy)]" />
+                    <span>{service.duration}</span>
                   </div>
                 </div>
-                <CardDescription className="text-gray-600 leading-relaxed">
+
+                <CardDescription className="text-gray-600 leading-relaxed mb-6">
                   {service.description}
                 </CardDescription>
+
+                {/* Modern Service Features */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center text-xs text-gray-500">
+                      <Heart className="w-4 h-4 mr-1 text-[var(--nina-burgundy)]" />
+                      <span>Bien-être</span>
+                    </div>
+                    <div className="flex items-center text-xs text-gray-500">
+                      <Users className="w-4 h-4 mr-1 text-[var(--nina-burgundy)]" />
+                      <span>Expert</span>
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <button className="bg-[var(--nina-burgundy)] text-white px-4 py-2 rounded-full text-sm font-medium">
+                    Réserver
+                  </button>
+                </div>
               </CardHeader>
             </Card>
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="nina-luxury-gradient-dark rounded-2xl p-8 text-white luxury-shadow-dark relative overflow-hidden">
-            {/* Luxury overlay effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        {/* Enhanced Call to Action */}
+        <div className={`text-center mt-20 transition-all duration-1000 delay-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="nina-luxury-gradient-dark rounded-3xl p-12 text-white luxury-shadow-dark relative overflow-hidden group">
+            {/* Enhanced Luxury overlay effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:via-white/20 transition-all duration-700"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--nina-gold)]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+            {/* Floating Elements */}
+            <div className="absolute top-6 right-6">
+              <Sparkles className="w-8 h-8 text-[var(--nina-gold)] animate-pulse" />
+            </div>
+            <div className="absolute bottom-6 left-6">
+              <Heart className="w-6 h-6 text-[var(--nina-gold)] animate-pulse" />
+            </div>
+
             <div className="relative z-10">
-              <h3 className="text-3xl font-playfair mb-4 luxury-text-shadow">Réservez Votre Moment de Détente</h3>
-              <p className="text-lg mb-6 opacity-90">
-                Contactez-nous pour personnaliser votre expérience bien-être
+              <h3 className="text-4xl font-playfair mb-6 luxury-text-shadow">
+                Réservez Votre <span className="text-[var(--nina-gold)]">Moment</span> de Détente
+              </h3>
+              <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed">
+                Contactez-nous dès maintenant pour personnaliser votre expérience bien-être
+                et découvrir nos offres exclusives
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="https://wa.me/22781836571"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-white text-[var(--nina-burgundy)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 luxury-shadow"
+                  className="inline-block bg-white text-[var(--nina-burgundy)] px-8 py-3 rounded-lg font-semibold luxury-shadow"
                 >
                   WhatsApp
                 </a>
                 <a
                   href="tel:+22781836571"
-                  className="inline-block luxury-backdrop border border-white/30 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
+                  className="inline-block luxury-backdrop border border-white/30 text-white px-8 py-3 rounded-lg font-semibold"
                 >
                   Appeler Maintenant
                 </a>

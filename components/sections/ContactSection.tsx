@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -86,51 +86,57 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
-      {/* Luxury Background */}
-      <div className="absolute inset-0 nina-luxury-gradient-diagonal opacity-20"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white/90"></div>
+    <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 via-white to-[var(--nina-burgundy)]/5 relative overflow-hidden">
+      {/* Modern Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-[var(--nina-gold)] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-48 h-48 bg-[var(--nina-burgundy)] rounded-full blur-3xl"></div>
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-playfair nina-burgundy mb-6">
-            Contact & Réservation
+        {/* Modern Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center space-x-2 bg-[var(--nina-burgundy)]/10 rounded-full px-6 py-2 mb-6">
+            <MessageCircle className="w-5 h-5 text-[var(--nina-burgundy)]" />
+            <span className="text-[var(--nina-burgundy)] font-medium">Contactez-nous</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-playfair nina-burgundy mb-6">
+            Contact & <span className="text-[var(--nina-gold)]">Réservation</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Prenez rendez-vous facilement ou contactez-nous pour toute question. 
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Prenez rendez-vous facilement ou contactez-nous pour toute question.
             Notre équipe est à votre disposition pour vous offrir la meilleure expérience.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8 animate-slide-up">
-            <div>
-              <h3 className="text-2xl font-playfair nina-burgundy mb-6">Informations de Contact</h3>
+          <div className="space-y-8">
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+              <h3 className="text-3xl font-playfair nina-burgundy mb-8">Informations de Contact</h3>
               <div className="grid gap-6">
                 {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-12 h-12 nina-gradient rounded-full flex items-center justify-center">
-                      <info.icon className="text-white" size={20} />
+                  <div key={index} className="flex items-start space-x-4 p-4 rounded-2xl bg-gray-50/50">
+                    <div className="flex-shrink-0 w-14 h-14 nina-gradient rounded-2xl flex items-center justify-center shadow-md">
+                      <info.icon className="text-white" size={22} />
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">{info.title}</h4>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-900 mb-2 text-lg">{info.title}</h4>
                       {info.link && info.title !== 'Horaires' ? (
-                        <a 
+                        <a
                           href={info.link}
-                          className="text-gray-600 hover:text-[var(--nina-burgundy)] transition-colors duration-300"
+                          className="text-gray-600 hover:text-[var(--nina-burgundy)] transition-colors duration-300 block"
                           target={info.link.startsWith('http') ? '_blank' : undefined}
                           rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                         >
                           {info.content.map((line, i) => (
-                            <div key={i}>{line}</div>
+                            <div key={i} className="leading-relaxed">{line}</div>
                           ))}
                         </a>
                       ) : (
                         <div className="text-gray-600">
                           {info.content.map((line, i) => (
-                            <div key={i}>{line}</div>
+                            <div key={i} className="leading-relaxed">{line}</div>
                           ))}
                         </div>
                       )}
@@ -141,39 +147,43 @@ export default function ContactSection() {
             </div>
 
             {/* Map Placeholder */}
-            <Card className="overflow-hidden border-0 luxury-shadow">
-              <div className="h-64 nina-luxury-gradient-light flex items-center justify-center">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+              <div className="h-64 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                 <div className="text-center text-gray-600">
-                  <MapPin size={48} className="mx-auto mb-2" />
-                  <p>Carte interactive</p>
-                  <p className="text-sm">123 Rue de la Beauté, 75001 Paris</p>
+                  <MapPin size={48} className="mx-auto mb-2 text-[var(--nina-burgundy)]" />
+                  <p className="font-medium">Carte interactive</p>
+                  <p className="text-sm">Quartier Recasement 3ème latérite, plaque Adouwal Adamou</p>
+                  <p className="text-sm">Niamey, Niger</p>
                 </div>
               </div>
-            </Card>
+            </div>
           </div>
 
           {/* Reservation Form */}
-          <div className="animate-slide-up" style={{animationDelay: '0.2s'}}>
-            <Card className="border-0 luxury-shadow-dark">
-              <CardHeader>
-                <CardTitle className="text-2xl font-playfair nina-burgundy">
+          <div>
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+              <div className="mb-8">
+                <h3 className="text-3xl font-playfair nina-burgundy mb-2">
                   Réserver un Rendez-vous
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+                </h3>
+                <p className="text-gray-600">Remplissez le formulaire ci-dessous pour prendre rendez-vous</p>
+              </div>
+              <div>
                 {isSubmitted ? (
-                  <div className="text-center py-8">
-                    <CheckCircle className="mx-auto mb-4 text-green-500" size={64} />
-                    <h3 className="text-xl font-semibold mb-2">Demande Envoyée!</h3>
-                    <p className="text-gray-600">
+                  <div className="text-center py-12">
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle className="text-green-500" size={40} />
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-3 text-gray-800">Demande Envoyée!</h3>
+                    <p className="text-gray-600 leading-relaxed">
                       Nous vous contacterons dans les plus brefs délais pour confirmer votre rendez-vous.
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-semibold text-gray-800 mb-3">
                           Nom complet *
                         </label>
                         <Input
@@ -182,11 +192,11 @@ export default function ContactSection() {
                           onChange={(e) => handleInputChange('name', e.target.value)}
                           placeholder="Votre nom complet"
                           required
-                          className="border-gray-300 focus:border-[var(--nina-burgundy)] focus:ring-[var(--nina-burgundy)]"
+                          className="h-12 border-2 border-gray-200 rounded-xl focus:border-[var(--nina-burgundy)] focus:ring-0 transition-colors duration-300"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-semibold text-gray-800 mb-3">
                           Email *
                         </label>
                         <Input
@@ -195,7 +205,7 @@ export default function ContactSection() {
                           onChange={(e) => handleInputChange('email', e.target.value)}
                           placeholder="votre@email.com"
                           required
-                          className="border-gray-300 focus:border-[var(--nina-burgundy)] focus:ring-[var(--nina-burgundy)]"
+                          className="h-12 border-2 border-gray-200 rounded-xl focus:border-[var(--nina-burgundy)] focus:ring-0 transition-colors duration-300"
                         />
                       </div>
                     </div>
@@ -286,8 +296,8 @@ export default function ContactSection() {
                     </Button>
                   </form>
                 )}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </div>

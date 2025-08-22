@@ -118,23 +118,23 @@ export default function StoreSection() {
         {/* Categories */}
         <div className="mb-16">
           <h3 className="text-3xl font-playfair text-center mb-12 nina-burgundy">Types de Services</h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {categories.map((category, index) => (
-              <Card key={index} className="hover-lift border-0 luxury-shadow overflow-hidden animate-slide-up luxury-glow" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="border-0 bg-white rounded-2xl overflow-hidden shadow-md">
                 <div className="relative">
                   <img
                     src={category.image}
                     alt={category.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-40 object-cover"
                   />
-                  <div className="absolute inset-0 nina-luxury-overlay" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="text-xl font-semibold mb-1 luxury-text-shadow">{category.name}</h4>
-                    <p className="text-sm opacity-90">{category.products}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-4 text-white">
+                    <h4 className="text-lg font-semibold mb-1">{category.name}</h4>
+                    <p className="text-xs opacity-90">{category.products}</p>
                   </div>
                 </div>
-                <CardContent className="p-6">
-                  <p className="text-gray-600">{category.description}</p>
+                <CardContent className="p-4">
+                  <p className="text-gray-600 text-sm leading-relaxed">{category.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -146,34 +146,41 @@ export default function StoreSection() {
           <h3 className="text-3xl font-playfair text-center mb-12 nina-burgundy">Services Populaires</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product, index) => (
-              <Card key={index} className="hover-lift border-0 luxury-shadow overflow-hidden animate-slide-up luxury-glow" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="border-0 bg-white rounded-2xl overflow-hidden shadow-md">
                 <div className="relative">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-56 object-cover"
+                    className="w-full h-48 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
                   <Badge
-                    className={`absolute top-3 right-3 luxury-shadow ${
-                      product.badge === 'Promo' ? 'bg-red-500' :
-                      product.badge === 'Nouveau' ? 'nina-luxury-gradient-dark' :
-                      'bg-black'
-                    } text-white`}
+                    className={`absolute top-3 left-3 text-xs font-medium px-2 py-1 rounded-full ${
+                      product.badge === 'Promo' ? 'bg-red-500 text-white' :
+                      product.badge === 'Nouveau' ? 'bg-[var(--nina-burgundy)] text-white' :
+                      'bg-gray-800 text-white'
+                    }`}
                   >
                     {product.badge}
                   </Badge>
+
+                  {/* Price Badge */}
+                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-full px-2 py-1">
+                    <span className="text-[var(--nina-burgundy)] font-bold text-sm">{product.price}</span>
+                  </div>
                 </div>
                 <CardContent className="p-4">
-                  <div className="text-sm text-gray-500 mb-1">{product.brand}</div>
-                  <h4 className="font-semibold mb-3 text-sm">{product.name}</h4>
+                  <div className="text-xs text-gray-500 mb-1 uppercase tracking-wide">{product.brand}</div>
+                  <h4 className="font-semibold mb-3 text-gray-800">{product.name}</h4>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <span className="text-lg font-bold nina-burgundy">{product.price}</span>
                       {product.originalPrice && (
                         <span className="text-sm text-gray-400 line-through">{product.originalPrice}</span>
                       )}
                     </div>
+                    <button className="bg-[var(--nina-burgundy)] text-white px-3 py-1 rounded-full text-xs font-medium">
+                      Commander
+                    </button>
                   </div>
                 </CardContent>
               </Card>
@@ -197,13 +204,13 @@ export default function StoreSection() {
                   href="https://wa.me/22781836571"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-white text-[var(--nina-burgundy)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 luxury-shadow"
+                  className="inline-block bg-white text-[var(--nina-burgundy)] px-8 py-3 rounded-lg font-semibold luxury-shadow"
                 >
                   Commander via WhatsApp
                 </a>
                 <button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="inline-block luxury-backdrop border border-white/30 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
+                  className="inline-block luxury-backdrop border border-white/30 text-white px-8 py-3 rounded-lg font-semibold"
                 >
                   Réserver en Ligne
                 </button>
