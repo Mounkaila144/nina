@@ -46,37 +46,37 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: 'Adresse',
-      content: ['123 Rue de la Beauté', '75001 Paris, France'],
+      content: ['Quartier Recasement', '3ème latérite, plaque Adouwal Adamou', 'Niamey, Niger'],
       link: 'https://maps.google.com'
     },
     {
       icon: Phone,
       title: 'Téléphone',
-      content: ['+33 1 23 45 67 89'],
-      link: 'tel:+33123456789'
+      content: ['+227 81 83 65 71'],
+      link: 'tel:+22781836571'
     },
     {
       icon: Mail,
       title: 'Email',
-      content: ['contact@nina-spa.fr'],
-      link: 'mailto:contact@nina-spa.fr'
+      content: ['contact@ninamassage.com'],
+      link: 'mailto:contact@ninamassage.com'
     },
     {
       icon: Clock,
       title: 'Horaires',
-      content: ['Lun-Sam: 9h-19h', 'Dimanche: 10h-17h'],
+      content: ['Lun-Sam: 8h-20h', 'Dimanche: Sur rendez-vous'],
       link: null
     }
   ];
 
   const services = [
+    'Drainage Lymphatique',
+    'Massage 4 mains',
+    'Pédicure',
+    'Manucure',
     'Massage Relaxant',
     'Massage Thérapeutique',
-    'Soin du Visage Premium',
-    'Épilation',
-    'Forfait Détente Complète',
-    'Massage Couples',
-    'Consultation Produits'
+    'Consultation Personnalisée'
   ];
 
   const timeSlots = [
@@ -86,8 +86,12 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 relative overflow-hidden">
+      {/* Luxury Background */}
+      <div className="absolute inset-0 nina-luxury-gradient-diagonal opacity-20"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white/90"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-playfair nina-burgundy mb-6">
@@ -137,8 +141,8 @@ export default function ContactSection() {
             </div>
 
             {/* Map Placeholder */}
-            <Card className="overflow-hidden border-0 shadow-lg">
-              <div className="h-64 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+            <Card className="overflow-hidden border-0 luxury-shadow">
+              <div className="h-64 nina-luxury-gradient-light flex items-center justify-center">
                 <div className="text-center text-gray-600">
                   <MapPin size={48} className="mx-auto mb-2" />
                   <p>Carte interactive</p>
@@ -150,7 +154,7 @@ export default function ContactSection() {
 
           {/* Reservation Form */}
           <div className="animate-slide-up" style={{animationDelay: '0.2s'}}>
-            <Card className="border-0 shadow-xl">
+            <Card className="border-0 luxury-shadow-dark">
               <CardHeader>
                 <CardTitle className="text-2xl font-playfair nina-burgundy">
                   Réserver un Rendez-vous
@@ -273,9 +277,9 @@ export default function ContactSection() {
                       />
                     </div>
 
-                    <Button 
+                    <Button
                       type="submit"
-                      className="w-full nina-gradient text-white hover:opacity-90 transition-all duration-300 py-3 text-lg"
+                      className="w-full nina-luxury-gradient-dark text-white hover:opacity-90 transition-all duration-300 py-3 text-lg luxury-shadow"
                     >
                       <Send className="mr-2" size={20} />
                       Envoyer la Demande

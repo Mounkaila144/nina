@@ -6,95 +6,99 @@ import { Badge } from '@/components/ui/badge';
 
 const categories = [
   {
-    name: 'Soins Visage',
-    description: 'Crèmes, sérums et masques haut de gamme',
-    products: '25+ produits',
-    image: 'https://images.pexels.com/photos/5938567/pexels-photo-5938567.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+    name: 'Massages',
+    description: 'Drainage lymphatique, massage 4 mains et techniques spécialisées',
+    products: '6+ services',
+    image: 'https://ninamassage.com/cdn/shop/files/Designsanstitre.zip-20.png?v=1746389423&width=600'
   },
   {
-    name: 'Soins Corps',
-    description: 'Huiles, laits et gommages luxueux',
-    products: '30+ produits',
-    image: 'https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+    name: 'Soins Esthétiques',
+    description: 'Pédicure, manucure et soins de beauté professionnels',
+    products: '4+ services',
+    image: 'https://ninamassage.com/cdn/shop/files/IMG_0814.jpg?v=1746459466&width=600'
   },
   {
-    name: 'Parfums & Fragrances',
-    description: 'Sélection exclusive de parfums de niche',
-    products: '15+ parfums',
-    image: 'https://images.pexels.com/photos/1190829/pexels-photo-1190829.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop'
+    name: 'Soins Personnalisés',
+    description: 'Services sur mesure selon vos besoins spécifiques',
+    products: 'Sur demande',
+    image: 'https://ninamassage.com/cdn/shop/files/Untitleddesign_1.png?v=1746389286&width=600'
   }
 ];
 
 const featuredProducts = [
   {
-    name: 'Sérum Anti-Âge Premium',
-    brand: 'La Mer',
-    price: '165€',
-    originalPrice: '185€',
-    image: 'https://images.pexels.com/photos/5938322/pexels-photo-5938322.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    badge: 'Promo'
+    name: 'Drainage Lymphatique',
+    brand: 'Nina Massage',
+    price: '25,000 CFA',
+    originalPrice: null,
+    image: 'https://ninamassage.com/cdn/shop/files/Designsanstitre.zip-20.png?v=1746389423&width=400',
+    badge: 'Populaire'
   },
   {
-    name: 'Huile Corporelle Relaxante',
-    brand: 'Clarins',
-    price: '45€',
+    name: 'Massage 4 mains',
+    brand: 'Nina Massage',
+    price: '50,000 CFA',
     originalPrice: null,
-    image: 'https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
+    image: 'https://ninamassage.com/cdn/shop/files/Untitleddesign_1.png?v=1746389286&width=400',
+    badge: 'Premium'
+  },
+  {
+    name: 'Pédicure Complète',
+    brand: 'Nina Massage',
+    price: '10,000 CFA',
+    originalPrice: null,
+    image: 'https://ninamassage.com/cdn/shop/files/IMG_0814.jpg?v=1746459466&width=400',
     badge: 'Nouveau'
   },
   {
-    name: 'Parfum Rose Éternelle',
-    brand: 'Diptyque',
-    price: '98€',
+    name: 'Manucure Professionnelle',
+    brand: 'Nina Massage',
+    price: '8,000 CFA',
     originalPrice: null,
-    image: 'https://images.pexels.com/photos/1190829/pexels-photo-1190829.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    badge: 'Exclusif'
-  },
-  {
-    name: 'Masque Hydratant Intensif',
-    brand: 'SK-II',
-    price: '75€',
-    originalPrice: '85€',
-    image: 'https://images.pexels.com/photos/5938567/pexels-photo-5938567.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop',
-    badge: 'Promo'
+    image: 'https://ninamassage.com/cdn/shop/files/Designsanstitre.zip-9.png?v=1746386760&width=400',
+    badge: 'Classique'
   }
 ];
 
 const storeFeatures = [
   {
     icon: Gift,
-    title: 'Produits Authentiques',
-    description: 'Sélection rigoureuse de marques de prestige'
+    title: 'Services Professionnels',
+    description: 'Techniques expertes et équipements de qualité'
   },
   {
     icon: Truck,
-    title: 'Livraison Gratuite',
-    description: 'À partir de 50€ d\'achat partout en France'
+    title: 'Service à Domicile',
+    description: 'Possibilité de déplacement selon disponibilité'
   },
   {
     icon: CreditCard,
-    title: 'Paiement Sécurisé',
-    description: 'Transactions protégées et confidentielles'
+    title: 'Paiement Flexible',
+    description: 'Plusieurs modes de paiement acceptés'
   },
   {
     icon: ShoppingBag,
-    title: 'Service Personnalisé',
-    description: 'Conseils beauté sur mesure par nos experts'
+    title: 'Conseils Personnalisés',
+    description: 'Accompagnement sur mesure selon vos besoins'
   }
 ];
 
 export default function StoreSection() {
   return (
-    <section id="store" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="store" className="py-20 relative overflow-hidden">
+      {/* Luxury Background */}
+      <div className="absolute inset-0 nina-luxury-gradient-light opacity-30"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-transparent to-white/70"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-playfair nina-burgundy mb-6">
-            Nina Store
+            Nos Services
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Découvrez notre sélection exclusive de cosmétiques et produits de beauté haut de gamme. 
-            Des marques prestigieuses pour sublimer votre routine beauté quotidienne.
+            Découvrez notre gamme complète de services de massage et de soins esthétiques.
+            Des techniques professionnelles pour votre bien-être et votre beauté.
           </p>
         </div>
 
@@ -113,19 +117,19 @@ export default function StoreSection() {
 
         {/* Categories */}
         <div className="mb-16">
-          <h3 className="text-3xl font-playfair text-center mb-12 nina-burgundy">Nos Catégories</h3>
+          <h3 className="text-3xl font-playfair text-center mb-12 nina-burgundy">Types de Services</h3>
           <div className="grid md:grid-cols-3 gap-8">
             {categories.map((category, index) => (
-              <Card key={index} className="hover-lift border-0 shadow-lg overflow-hidden animate-slide-up" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="hover-lift border-0 luxury-shadow overflow-hidden animate-slide-up luxury-glow" style={{animationDelay: `${index * 0.1}s`}}>
                 <div className="relative">
                   <img
                     src={category.image}
                     alt={category.name}
                     className="w-full h-48 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 nina-luxury-overlay" />
                   <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="text-xl font-semibold mb-1">{category.name}</h4>
+                    <h4 className="text-xl font-semibold mb-1 luxury-text-shadow">{category.name}</h4>
                     <p className="text-sm opacity-90">{category.products}</p>
                   </div>
                 </div>
@@ -139,20 +143,21 @@ export default function StoreSection() {
 
         {/* Featured Products */}
         <div className="mb-16">
-          <h3 className="text-3xl font-playfair text-center mb-12 nina-burgundy">Produits Vedettes</h3>
+          <h3 className="text-3xl font-playfair text-center mb-12 nina-burgundy">Services Populaires</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product, index) => (
-              <Card key={index} className="hover-lift border-0 shadow-lg overflow-hidden animate-slide-up" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="hover-lift border-0 luxury-shadow overflow-hidden animate-slide-up luxury-glow" style={{animationDelay: `${index * 0.1}s`}}>
                 <div className="relative">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="w-full h-56 object-cover"
                   />
-                  <Badge 
-                    className={`absolute top-3 right-3 ${
-                      product.badge === 'Promo' ? 'bg-red-500' : 
-                      product.badge === 'Nouveau' ? 'nina-gradient' : 
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
+                  <Badge
+                    className={`absolute top-3 right-3 luxury-shadow ${
+                      product.badge === 'Promo' ? 'bg-red-500' :
+                      product.badge === 'Nouveau' ? 'nina-luxury-gradient-dark' :
                       'bg-black'
                     } text-white`}
                   >
@@ -178,27 +183,31 @@ export default function StoreSection() {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="nina-gradient rounded-2xl p-8 text-white">
-            <ShoppingBag className="mx-auto mb-4" size={48} />
-            <h3 className="text-3xl font-playfair mb-4">Boutique en Ligne Bientôt Disponible</h3>
-            <p className="text-lg mb-6 opacity-90">
-              En attendant, visitez notre boutique physique ou contactez-nous pour vos commandes
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-block bg-white text-[var(--nina-burgundy)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
-              >
-                Nous Contacter
-              </button>
-              <a 
-                href="https://maps.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-white/10 backdrop-blur-sm border border-white/30 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
-              >
-                Voir l'Itinéraire
-              </a>
+          <div className="nina-luxury-gradient-dark rounded-2xl p-8 text-white luxury-shadow-dark relative overflow-hidden">
+            {/* Luxury overlay effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+            <div className="relative z-10">
+              <ShoppingBag className="mx-auto mb-4 drop-shadow-lg" size={48} />
+              <h3 className="text-3xl font-playfair mb-4 luxury-text-shadow">Réservez Votre Service</h3>
+              <p className="text-lg mb-6 opacity-90">
+                Contactez-nous directement via WhatsApp pour réserver votre service ou demander des informations
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="https://wa.me/22781836571"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-white text-[var(--nina-burgundy)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 luxury-shadow"
+                >
+                  Commander via WhatsApp
+                </a>
+                <button
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-block luxury-backdrop border border-white/30 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
+                >
+                  Réserver en Ligne
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -7,6 +7,10 @@
   --nina-light-burgundy: #8B2B30;
   --nina-dark: #1a1a1a;
   --nina-gray: #f8f8f8;
+  --nina-black: #000000;
+  --nina-white: #ffffff;
+  --nina-gold: #D4AF37;
+  --nina-gold-light: #F4E4BC;
 }
 
 @layer base {
@@ -55,6 +59,38 @@
   background: linear-gradient(135deg, var(--nina-burgundy) 0%, var(--nina-light-burgundy) 100%);
 }
 
+/* Luxury Gradients */
+.nina-luxury-gradient-dark {
+  background: linear-gradient(135deg, var(--nina-burgundy) 0%, var(--nina-black) 100%);
+}
+
+.nina-luxury-gradient-light {
+  background: linear-gradient(135deg, var(--nina-white) 0%, var(--nina-burgundy) 100%);
+}
+
+.nina-luxury-gradient-radial {
+  background: radial-gradient(ellipse at center, var(--nina-burgundy) 0%, var(--nina-black) 70%);
+}
+
+.nina-luxury-gradient-diagonal {
+  background: linear-gradient(45deg, var(--nina-white) 0%, var(--nina-burgundy) 50%, var(--nina-black) 100%);
+}
+
+.nina-luxury-overlay {
+  background: linear-gradient(135deg,
+    rgba(96, 29, 32, 0.9) 0%,
+    rgba(96, 29, 32, 0.7) 30%,
+    rgba(0, 0, 0, 0.8) 100%);
+}
+
+.nina-elegant-bg {
+  background: linear-gradient(135deg,
+    var(--nina-white) 0%,
+    rgba(96, 29, 32, 0.05) 25%,
+    rgba(96, 29, 32, 0.1) 50%,
+    var(--nina-burgundy) 100%);
+}
+
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
 }
@@ -92,4 +128,302 @@
 .hover-lift:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(96, 29, 32, 0.15);
+}
+
+/* Luxury Effects */
+.luxury-shadow {
+  box-shadow:
+    0 4px 20px rgba(96, 29, 32, 0.1),
+    0 8px 40px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.luxury-shadow-dark {
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(96, 29, 32, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.luxury-border {
+  border: 1px solid rgba(96, 29, 32, 0.2);
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(96, 29, 32, 0.05) 100%);
+}
+
+.luxury-text-shadow {
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(96, 29, 32, 0.2);
+}
+
+.luxury-backdrop {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Luxury Animations */
+@keyframes luxuryShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.luxury-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: luxuryShimmer 3s infinite;
+}
+
+.luxury-glow {
+  position: relative;
+}
+
+.luxury-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--nina-burgundy), var(--nina-gold), var(--nina-burgundy));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.luxury-glow:hover::before {
+  opacity: 0.3;
+}
+
+/* Luxury Card Effects */
+.luxury-card {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(96, 29, 32, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(96, 29, 32, 0.1);
+}
+
+/* Navbar Enhancements */
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(96, 29, 32, 0.1);
+}
+
+.navbar-scrolled {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(96, 29, 32, 0.02) 100%);
+  backdrop-filter: blur(25px);
+  box-shadow: 0 4px 20px rgba(96, 29, 32, 0.1);
+}
+
+.nav-link-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link-hover::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--nina-burgundy), var(--nina-gold));
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-hover:hover::before {
+  width: 100%;
+}
+
+/* Navbar Animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar-animate {
+  animation: slideDown 0.6s ease-out;
+}
+
+/* Mobile Menu Animation */
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobile-menu-animate {
+  animation: slideInFromTop 0.3s ease-out;
+}
+
+/* Logo Pulse Effect */
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.logo-pulse:hover {
+  animation: logoPulse 1s ease-in-out;
+}
+
+/* Text Logo Effects */
+.text-logo-glow {
+  text-shadow:
+    0 0 10px rgba(96, 29, 32, 0.3),
+    0 0 20px rgba(96, 29, 32, 0.2),
+    0 0 30px rgba(212, 175, 55, 0.1);
+}
+
+.text-logo-glow:hover {
+  text-shadow:
+    0 0 15px rgba(96, 29, 32, 0.5),
+    0 0 25px rgba(96, 29, 32, 0.3),
+    0 0 35px rgba(212, 175, 55, 0.2),
+    0 0 45px rgba(212, 175, 55, 0.1);
+}
+
+/* Gradient text animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text-animate {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Logo container hover effects */
+.logo-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    rgba(96, 29, 32, 0.1),
+    transparent,
+    rgba(212, 175, 55, 0.1),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: rotate 4s linear infinite;
+}
+
+.logo-container:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Subtle scale effect */
+.group-hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+/* Product Card Enhancements */
+.product-card {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(96, 29, 32, 0.1);
+}
+
+.product-card:hover {
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.95) 100%);
+  border-color: rgba(96, 29, 32, 0.2);
+  transform: translateY(-8px);
+}
+
+.product-image-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(96, 29, 32, 0.1) 0%,
+    transparent 50%,
+    rgba(212, 175, 55, 0.1) 100%
+  );
+}
+
+/* Cart Animation */
+@keyframes cartBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.cart-bounce {
+  animation: cartBounce 0.6s ease-in-out;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
