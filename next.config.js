@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Retiré 'output: export' pour utiliser le mode standard de Next.js
+  output: 'export',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -17,11 +17,8 @@ const nextConfig = {
       },
     ],
   },
-  // Configuration pour le déploiement
   trailingSlash: true,
-  
-  // Si vous déployez sur un sous-dossier, décommentez et modifiez :
-  // basePath: '/your-subdirectory',
+  distDir: 'out',
 };
 
 module.exports = nextConfig;
