@@ -61,7 +61,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section ref={heroRef} id="accueil" className="relative min-h-screen overflow-hidden pt-14 sm:pt-16 md:pt-18">
+    <section ref={heroRef} id="accueil" className="relative h-screen overflow-hidden pt-14 sm:pt-16 md:pt-18 mb-0">
       {/* Enhanced Background with Parallax Effect */}
       <div className="absolute inset-0 nina-luxury-gradient-radial opacity-30"></div>
 
@@ -141,7 +141,7 @@ export default function HeroSection() {
       </div>
 
       {/* Enhanced Hero Content */}
-      <div className="relative z-10 min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-4.5rem)] flex items-center justify-center py-4 sm:py-8">
+      <div className="relative z-10 h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] md:h-[calc(100vh-4.5rem)] flex items-center justify-center py-4 sm:py-8">
         <div className={`text-center text-white max-w-5xl mx-auto px-4 transition-all duration-1000 ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>

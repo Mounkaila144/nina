@@ -85,21 +85,32 @@ export default function MassageSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // Fallback pour s'assurer que le contenu devient visible
+    const fallbackTimer = setTimeout(() => {
+      if (!isVisible) {
+        setIsVisible(true);
+      }
+    }, 1000);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          clearTimeout(fallbackTimer);
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 } // Réduit le threshold pour mobile
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
+  }, [isVisible]);
 
   return (
     <section ref={sectionRef} id="massage" className="py-24 bg-gradient-to-br from-white via-gray-50 to-[var(--nina-burgundy)]/5 relative overflow-hidden">

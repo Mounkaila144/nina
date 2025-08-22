@@ -28,11 +28,11 @@ export default function AppointmentsPage() {
   const appointments: Appointment[] = [
     {
       id: 'RDV001',
-      clientName: 'Marie Dubois',
+      clientName: 'Mariame Ila',
       clientPhone: '06 12 34 56 78',
       clientEmail: 'marie.dubois@email.com',
       service: 'Massage relaxant 60min',
-      employee: 'Sophie Martin',
+      employee: 'Moubarack Ali',
       date: '2024-01-22',
       time: '09:00',
       duration: 60,
@@ -76,7 +76,7 @@ export default function AppointmentsPage() {
       clientPhone: '06 45 67 89 01',
       clientEmail: 'anne.dupont@email.com',
       service: 'Pédicure relaxante',
-      employee: 'Sophie Martin',
+      employee: 'Moubarack Ali',
       date: '2024-01-22',
       time: '16:00',
       duration: 45,

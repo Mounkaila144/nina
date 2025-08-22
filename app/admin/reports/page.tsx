@@ -47,10 +47,10 @@ export default function ReportsPage() {
   ];
 
   const topEmployees: TopEmployee[] = [
-    { name: 'Sophie Martin', revenue: 5200, appointments: 65, rating: 4.8 },
+    { name: 'Moubarack Ali', revenue: 5200, appointments: 65, rating: 4.8 },
     { name: 'Isabelle Moreau', revenue: 4850, appointments: 58, rating: 4.9 },
     { name: 'Thomas Leroy', revenue: 3200, appointments: 42, rating: 4.6 },
-    { name: 'Marie Dubois', revenue: 4100, appointments: 48, rating: 4.7 },
+    { name: 'Mariame Ila', revenue: 4100, appointments: 48, rating: 4.7 },
   ];
 
   const monthlyStats = {

@@ -40,21 +40,21 @@ const stats = [
 
 const testimonials = [
   {
-    name: 'Marie Dubois',
+    name: 'Mariame Ila',
     role: 'Cliente Régulière',
     content: 'Nina est exceptionnelle ! Ses massages m\'ont aidée à retrouver sérénité et bien-être. Je recommande vivement ses services.',
     rating: 5,
     image: '/image/clients/cliente1.png'
   },
   {
-    name: 'Sophie Martin',
+    name: 'Moubarack Ali',
     role: 'Professionnelle',
     content: 'Le drainage lymphatique chez Nina a transformé ma routine bien-être. Professionnalisme et douceur au rendez-vous.',
     rating: 5,
     image: '/image/clients/client2.png'
   },
   {
-    name: 'Amélie Laurent',
+    name: 'Wahid Habibou',
     role: 'Maman Active',
     content: 'Un moment de détente absolue ! Nina sait exactement comment soulager les tensions. Une vraie professionnelle.',
     rating: 5,
@@ -67,45 +67,60 @@ export default function StatsTestimonialsSection() {
   const [animatedStats, setAnimatedStats] = useState(stats.map(() => 0));
   const sectionRef = useRef<HTMLElement>(null);
 
+  const animateNumbers = () => {
+    stats.forEach((stat, index) => {
+      let start = 0;
+      const end = stat.number;
+      const duration = 2000;
+      const increment = end / (duration / 16);
+      
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          start = end;
+          clearInterval(timer);
+        }
+        setAnimatedStats(prev => {
+          const newStats = [...prev];
+          newStats[index] = start;
+          return newStats;
+        });
+      }, 16);
+    });
+  };
+
   useEffect(() => {
+    // Fallback pour s'assurer que le contenu devient visible
+    const fallbackTimer = setTimeout(() => {
+      if (!isVisible) {
+        setIsVisible(true);
+        animateNumbers();
+      }
+    }, 1000);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          clearTimeout(fallbackTimer);
           setIsVisible(true);
-          // Animate numbers
-          stats.forEach((stat, index) => {
-            let start = 0;
-            const end = stat.number;
-            const duration = 2000;
-            const increment = end / (duration / 16);
-            
-            const timer = setInterval(() => {
-              start += increment;
-              if (start >= end) {
-                start = end;
-                clearInterval(timer);
-              }
-              setAnimatedStats(prev => {
-                const newStats = [...prev];
-                newStats[index] = start;
-                return newStats;
-              });
-            }, 16);
-          });
+          animateNumbers();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 } // Réduit le threshold pour mobile
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
+  }, [isVisible]);
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 via-white to-[var(--nina-gold-light)]/20 relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 via-white to-[var(--nina-gold-light)]/20 relative overflow-hidden mt-0">
       {/* Background Decorations */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-32 h-32 bg-[var(--nina-burgundy)] rounded-full blur-3xl"></div>

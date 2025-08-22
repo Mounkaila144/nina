@@ -23,7 +23,7 @@ export default function SalesPage() {
   const sales: Sale[] = [
     {
       id: 'V001',
-      client: 'Marie Dubois',
+      client: 'Mariame Ila',
       services: ['Massage relaxant', 'Soin visage'],
       products: ['Huile essentielle', 'Crème hydratante'],
       total: 125.00,
@@ -33,7 +33,7 @@ export default function SalesPage() {
     },
     {
       id: 'V002',
-      client: 'Sophie Martin',
+      client: 'Moubarack Ali',
       services: ['Massage thérapeutique'],
       products: [],
       total: 80.00,
